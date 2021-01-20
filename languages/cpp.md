@@ -1,4 +1,4 @@
-*Everything I note about C++ programming language is here.*
+*Everything I note about C++ programming is here.*
 
 ---
 

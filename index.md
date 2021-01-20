@@ -1,5 +1,5 @@
-  [TODOs](todo/index.html)   |   [Notes](notes/index.html)   | [Contact me](contacts/index.md)  
-[Languages](languages/languages.md) | [Abstracts](abstracts/index.md) |  [Archive](archive/index.md)
+: [TODOs](todo/index.html) : | : [Notes](notes/index.html) : | : [Contact me](contacts/index.md) : | 
+[Languages](languages/languages.md) |:[Abstracts](abstracts/index.md):| :  [Archive](archive/index.md)   : |
 
 ---
 

@@ -1,4 +1,4 @@
-*Everything I note about Java programming language is here.*
+*Everything I note about Java programming is here.*
 
 ---
 
