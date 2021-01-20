@@ -1,5 +1,5 @@
-TODOs | Notes | Contact me  
-Languages | Abstracts | Archive
+  [TODOs](todo/index.html)   |   [Notes](notes/index.html)   | [Contact me](contacts/index.md)  
+[Languages](languages/Languages.md) | [Abstracts](abstracts/index.md) |  [Archive](archive/index.md)
 
 ---
 
@@ -24,14 +24,17 @@ Languages | Abstracts | Archive
   - English Language
 
 # TODOs # 
-  - TODOs
+  - [TODOs](todo/index.html) 
 
 # Notes # 
-  - My personal notes
+  - [My *personal* notes](notes/index.html)
 
 # Archive #
-  - Archive
+  - [Archive](archive/index.md)
 
 ---
-Contact me:  
-akimkomir@mail.ru
+
+*Contact me via:*
+  - *Email*
+  - *Social media*
+  - *Messenger*
