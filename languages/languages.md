@@ -1,11 +1,12 @@
-# Programming Languages:
-+ [C++](C++)
-+ [Java](Java)
-
-# Linux related
-+ [Vim](Vim)
-+ [RegEx](RegEx)
-
-# Web development
-+ [HTML](HTML)
-+ [Markdown](Markdown)
+# Languages #
+### Programming ###
+  - [Java](java)
+  - [C++](cpp)
+### General ###
+  - [Vim](vim)
+  - [RegEx](regex)
+  - [Shell scripting](shell-scipting) 
+### Web Development ###
+  - [HTML](html)
+  - [Markdown](markdown)
+  - [LaTeX](latex)

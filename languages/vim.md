@@ -1,4 +1,9 @@
-# Movements
+*Advanced Vim key combinations and commands that I note are here.*
+
+---
+
+# Vim
+## Movements
 `zz` - put current line in the *center* of the **screen**  
 `zt` - put current line at the *top* of the **screen**  
 `zb` - put current line at the *bottom* of the **screen**  
@@ -14,7 +19,7 @@
 `0` - go to the *beggining* of a current **line**  
 `^` - go to the *beggining* of the **text** in current line  
 
-# Deletion commands
+## Deletion commands
 > *Note: **every** motion with `d` works with `c` as well* 
 
 `D` - delete to the *end* of the **line**
@@ -41,11 +46,11 @@
   - `
     > *Note: if the cursor is **before** quotes in a current line, this command will still work.*
 
-# Commands
-### Substitute
+## Commands
+###### Substitute
 `<s/'old'/'new'/<'opt'>`
 
-# Miscellaneous
+## Miscellaneous
 `ZZ` - save and quit  
 `ZQ` - quit without saving 
 

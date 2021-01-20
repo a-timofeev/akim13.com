@@ -1,20 +1,20 @@
   [TODOs](todo/index.html)   |   [Notes](notes/index.html)   | [Contact me](contacts/index.md)  
-[Languages](languages/Languages.md) | [Abstracts](abstracts/index.md) |  [Archive](archive/index.md)
+[Languages](languages/languages.md) | [Abstracts](abstracts/index.md) |  [Archive](archive/index.md)
 
 ---
 
 # Languages #
 ### Programming ###
-  - Java
-  - C++
+  - [Java](languages/java.md)
+  - [C++](languages/cpp.md)
 ### General ###
-  - Vim
-  - RegEx
-  - Shell scripting
+  - [Vim](languages/vim.md)
+  - [RegEx](languages/regex.md)
+  - [Shell scripting](languages/shell-scripting.md)
 ### Web Development ###
-  - HTML
-  - Markdown
-  - LaTeX
+  - [HTML](languages/html.md)
+  - [Markdown](languages/markdown.md)
+  - [LaTeX](languages/latex.md)
 
 # Abstracts #
 ### Science ###
