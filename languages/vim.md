@@ -32,6 +32,7 @@
 `di<'obj'>` - delete *everything* **[i]nside** the text object  
 `da<'obj'>` - delete *everything* **"[a]round"** the text object (everything inside + the object itself)         
 `'obj'`:
+  - `l` - [l]etter
   - `w` - [w]ord   
     > *Note:        `diw` puts a cursor **before the next word** leaving an extra whitespace, whereas*  
     > *&emsp;&emsp; `daw` puts a cursor **at the beggining of the next word***. <!-- &emsp; is TAB in HTML -->
@@ -47,11 +48,29 @@
     > *Note: if the cursor is **before** quotes in a current line, this command will still work.*
 
 ## Commands
-###### Substitute
-`<s/'old'/'new'/<'opt'>`
+##### Substitute
+`:<'range'>s/foo_old/foo_new/<'flags'>`  
+> *Note: to substitute only an exact occurence of a word use `\<foo_old\>`.*  
+> *Basically, escaped `<>`.*
+
+`'range'`:
+  - `%` - every line
+  - `int_i,int_j` - from line `i` to line `j` inclusive
+  - `.,+int_i` - from a current line to `i` next
+  - `-int_i,.` - until a current line from `i` lines before
+    > *Note: previous example could be used as well but with a prompt to swap a backwards range.*
+
+`'flags'`:
+  - `g` - substitute [g]lobally (each occurence in a line)
+  - `i` - [i]gnore cAsE 
+  - `c` - prompt each case for [c]onfirmation 
+    > *Note: there is an option to replace all occurences.*  
+  - `n` - output number of occurences
+    > *Note: when flag `n` is used nothing will actually be substituted.*
+  - `&` - reuse last argument
 
 ## Miscellaneous
-`ZZ` - save and quit  
+`ZZ` - save and quit sav   
 `ZQ` - quit without saving 
 
 `U` - undo changes on a **whole line**  
