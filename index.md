@@ -4,13 +4,15 @@
 ---
 
 # Languages #
-### Programming ###
+### Programming ###  
   - [Java](languages/java.md)
-  - [C++](languages/cpp.md)
+  - [C++](languages/cpp.md)  
+
 ### General ###
   - [Vim](languages/vim.md)
   - [RegEx](languages/regex.md)
-  - [Shell scripting](languages/shell-scripting.md)
+  - [Shell scripting](languages/shell-scripting.md)  
+
 ### Web Development ###
   - [HTML](languages/html.md)
   - [Markdown](languages/markdown.md)
