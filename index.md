@@ -21,7 +21,7 @@
 # Abstracts #
 ### Science ###
 - Mathematics
-- Computer Science
+- [Computer Science](abstracts/cs.md)
 ### Humanities ###
 - English Language
 
