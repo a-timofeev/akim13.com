@@ -1,8 +1,20 @@
 *Here are my notes on general topics.* 
 
 ---
+### General ###
+- Add payment methods
+- Ways to contact me w/o the phone number:
+  - Email
+    - akimkomir@mail.ru - regular email
+    - akimkom@protonmail.com - business email (temporary)
+    - akimkomir@gmail.com - backup email
+  - Discord
+  - Skype ( https://join.skype.com/invite/jtgPJZzrAS8B )
+  - VK ( https://vk.com/id487427652 )
+  - Telegram ( https://t.me/jac0g )
+  - Element ( https://matrix.to/#/@jac0g:matrix.org )
 
-#### College ####
+### College ###
 **Notes:**
 - Viable subjects to pick:
   1. Computer Science
