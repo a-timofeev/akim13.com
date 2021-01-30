@@ -3,6 +3,6 @@
 ---
 
 # Assignments #
-  - [Assignments](cs-assignments/cs-assignments.md)  
+  - [Assignments](cs-assignments.md)  
     
 # Abstracts #

@@ -1,8 +1,41 @@
-<!DOCTYPE html>
-<html>
-<body>
+<!doctype html>
+<html class="no-js" lang="en">
+   
+  <head>
+    <link rel="stylesheet" href="https://cindyjs.org/dist/v0.8/katex/katex.min.css"> 
+    <script type="text/javascript" src="https://cindyjs.org/dist/v0.8/katex/katex.min.js"></script>
+  </head>
 
-  <p> HIIII! </p>
-
-</body>
+  <body>
+    <p>
+      oh, btw <script type="text/x-tex">\frac{a}{b}</script> <br>
+      look at this:<br>
+      <script type="text/x-tex;mode=display">
+        x = \frac{r((c-2) \cos \theta + c + 2)(\cos \theta + 1)}{4} \qquad
+	y = r \cdot \sin \theta
+      </script>
+    </p>
+ 
+    <!-- DO NOT TOUCH -->
+    <script type="text/javascript">
+      (function() {
+        "use strict";
+        var scripts = document.body.getElementsByTagName("script");
+        scripts = Array.prototype.slice.call(scripts);
+        scripts.forEach(function(script) {
+          if (!/^text\/(x-)?([lk]a)?tex($|;)/.test(script.type))
+            return;
+          var display = (/;mode=display($|;)/.test(script.type));
+          var elt = document.createElement(display ? "div" : "span");
+          try {
+            katex.render(script.text, elt, {displayMode: display});
+          } catch (err) {
+            console.error(err);
+            elt.textContent = script.text;
+          }
+          script.parentNode.replaceChild(elt, script);
+        });
+      })();
+    </script> 
+  </body>
 </html>
