@@ -7,15 +7,55 @@
   </head>
 
   <body>
+    <h1>Задание</h1>
     <p>
-      oh, btw <script type="text/x-tex">\frac{a}{b}</script> <br>
-      look at this:<br>
-      <script type="text/x-tex;mode=display">
-        x = \frac{r((c-2) \cos \theta + c + 2)(\cos \theta + 1)}{4} \qquad
-	y = r \cdot \sin \theta
-      </script>
+      К окружности с диаметром AB = 6 проведена касательная BC так, что <script type="text/x-tex">3\sqrt{2}</script>.<br>
+      Прямая AC вторично пересекает окружность в точке D. Точка E диаметрально противоположна точке D.<br>
+      Прямые ED и BC пересекаются в точке F.
     </p>
- 
+
+    <h1>Рисунок</h1>
+    <img src="circle.png"alt="Picture"style="width:1100px;height:600px;">
+
+    <h1>Решение пункта а)</h1>
+    <p>
+      Заметим, что <script type="text/x-tex">\measuredangle</script>BDA=90°.<br>
+      Поскольку этот угол опирается на диаметр AB. Тогда BD — высота прямоугольного треугольника ABC.<br>
+      По свойству высоты получаем, что <script type="text/x-tex">BD=\sqrt{CD \cdot AD},</script>
+      тогда, <script type="text/x-tex">BD^2 = CD \cdot AD.</script><br>
+      Треугольники EOB и DOA равны по двум сторонам и углу между ними, значит, EB = AD,<br> откуда
+    <script type="text/x-tex">BD^2 = CD \cdot AD = CD \cdot BE.</script>
+
+    <h1>Решение пункта б)</h1>
+    <p>
+    Выразим площадь треугольника FBE:
+    <script type="text/x-tex;mode=display">S_{FBE}=S_{OBF}+S_{OBE}=
+      \frac{1}{2}OB\cdot BF + S_{AOD}=\frac{1}{2}OB\cdot BF + \frac{1}{2}S_{ABD}=
+      \frac{1}{2}OB\cdot BF+\frac{1}{4}AD\cdot BD
+    </script>
+    Вычислим длины отрезков:
+    <script type="text/x-tex;mode=display">
+      BD=\frac{2S_{ABC}}{AC}=2\sqrt 3 
+    </script><br>
+    <script type="text/x-tex;mode=display">
+      AD=\sqrt{AB^2-BD^2}=2 \sqrt 6
+    </script><br>
+    <script type="text/x-tex;mode=display">
+      CD=AC-AD=\sqrt{AB^2+BC^2}-2\sqrt 6=\sqrt 6
+    </script><br>
+    Применим теорему Менелая для треугольника ABC и прямой ODF:
+    <script type="text/x-tex;mode=display">
+      \frac{BO}{OA}\cdot\frac{AD}{DC}\cdot\frac{CF}{FB}=1, 
+    </script><br>
+    откуда BF=2CF. Таким образом, C — середина BF и <script type="text/x-tex">BF=6\sqrt{2}.</script>
+    Следовательно, 
+    <script type="text/x-tex;mode=display">
+      S_{FBE}=\frac{1}{2}OB\cdot BF+\frac{1}{4}AD\cdot BD=\frac{1}{2}\cdot 3 \cdot 6\sqrt{2}+
+      \frac{1}{4}\cdot 2\sqrt{6}\cdot 2\sqrt{3}=12\sqrt{2}
+    </script><br>
+    Ответ: б) <script type="text/x-tex">12\sqrt{2}</script> 
+    </p>
+
     <!-- DO NOT TOUCH -->
     <script type="text/javascript">
       (function() {
@@ -37,5 +77,8 @@
         });
       })();
     </script> 
+     <script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.14'><\/script>".replace("HOST", location.hostname));
+//]]></script> 
   </body>
 </html>
