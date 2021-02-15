@@ -42,26 +42,32 @@
 - [Laptop](https://www.dell.com/en-us/shop/dell-laptops/new-xps-15-laptop/spd/xps-15-9500-laptop/xn9500cto210s?view=configurations&configurationid=83214c76-bd89-4854-aa28-92f52a583764)
 - Airpods pro
 - Sony headphones
-- GPS tracker
+- *GPS tracker*
 - Powerbank
 - Hairbrush
 - Hand sanitizer
 - Napkins
-- Draft notebook
+- *Draft notebook*
 - Textbooks
-- Pencil box
-- Water bottle
+- *Pencil box*
+- *Water bottle*
 - Wallet
 - [Creddit card holder](https://store.fantomwallet.com/build-your-own-credit-card-fan-wallet/)
-- Charging cables
+- *Charging cables*
 - USB/Hard drive
 - Wireless mouse?
 - [Mask](https://www.tombihn.com/collections/facemasks/products/v4mask?variant=32762416988223)
 - [Laptop/Screen cleaner](https://www.amazon.co.uk/dp/B07W1L7TCF?tag=excessorizeme-21&geniuslink=true)
 - [Phone holder](https://www.amazon.com/dp/B07XC1NT8N/ref=as_li_ss_tl?ie=UTF8&linkCode=sl1&tag=excessorizeme-20&linkId=f5a4f867967765a2bf222cd04d811574&language=en_US)
-
-
-
-
-
-  
+- Playing cards
+- Second pair of glasses
+- Contact lenses
+- [Swiss army knife](https://www.swissarmy.com/us/en/Products/Swiss-Army-Knives/Medium-Pocket-Knives/Fieldmaster/p/1.4713#accordion-prod-details-3) 
+- Lighter
+- *Stylus*
+- Sticky notes
+- *Wall charger*
+- Trash bag
+- Snack bars
+- *Care kit for glasses*
+- First aid kit
