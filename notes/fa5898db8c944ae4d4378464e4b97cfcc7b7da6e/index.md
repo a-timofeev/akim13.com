@@ -55,7 +55,6 @@
 - [Creddit card holder](https://store.fantomwallet.com/build-your-own-credit-card-fan-wallet/)
 - *Charging cables*
 - USB/Hard drive
-- Wireless mouse?
 - [Mask](https://www.tombihn.com/collections/facemasks/products/v4mask?variant=32762416988223)
 - [Laptop/Screen cleaner](https://www.amazon.co.uk/dp/B07W1L7TCF?tag=excessorizeme-21&geniuslink=true)
 - [Phone holder](https://www.amazon.com/dp/B07XC1NT8N/ref=as_li_ss_tl?ie=UTF8&linkCode=sl1&tag=excessorizeme-20&linkId=f5a4f867967765a2bf222cd04d811574&language=en_US)
@@ -71,3 +70,5 @@
 - Snack bars
 - *Care kit for glasses*
 - First aid kit
+- [Water bottle](https://www.livelarq.com/larq-bottle)
+- [Fidget toy](https://www.officialfidgetcube.com/collections/all/products/fidget-cube?variant=35624577488)
