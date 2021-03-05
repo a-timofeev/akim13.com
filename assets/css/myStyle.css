@@ -1,4 +1,8 @@
 body {
-  background-color: #252525;
+  background: linear-gradient(to top left, #1a1a1a 7%, #595959 170%);
+  color: #d4d4d4;
+}
+
+a {
   color: #d4d4d4;
 }
