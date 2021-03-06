@@ -9,7 +9,7 @@
 
 ## Realisation ##
   - Squares are stored in dynamic array.
-  - When the head turns 
+  - Every update coords of tail = coords of previous body part 1 frame earlier +/- 30 (to connect).
 
 ## Things to keep in mind ##
   - Snake can't instantly turn in the opposite direction.
