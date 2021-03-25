@@ -50,7 +50,6 @@
 - *Draft notebook*
 - Textbooks
 - *Pencil box*
-- *Water bottle*
 - Wallet
 - [Creddit card holder](https://store.fantomwallet.com/build-your-own-credit-card-fan-wallet/)
 - *Charging cables*
