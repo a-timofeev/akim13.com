@@ -71,3 +71,4 @@
 - First aid kit
 - [Water bottle](https://www.livelarq.com/larq-bottle)
 - [Fidget toy](https://www.officialfidgetcube.com/collections/all/products/fidget-cube?variant=35624577488)
+- Shoehorn
