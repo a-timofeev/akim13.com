@@ -19,11 +19,9 @@
   - [LaTeX](languages/latex.md)
 
 # Abstracts #
-### Science ###
-- Mathematics
-- [Computer Science](abstracts/cs.md)
-### Humanities ###
-- English Language
+- [Computer Science](./abstracts/computer-science/index.md)
+- [English Language](./abstracts/english-language/index.md)
+- [Russian Literature](./abstracts/russian-literature/index.md)
 
 # TODOs # 
   - [TODOs](todo/index.html) 
