@@ -1,5 +1,3 @@
-[Computer Science](cs.md)
-[English language](english.md)
-=======
-- [Computer Science](cs.md)
-- [Literature](literature.md)
+- [Computer Science](./computer-science/index.md)
+- [English language](./english-language/index.md)
+- [Literature](./russian-literature/index.md)
