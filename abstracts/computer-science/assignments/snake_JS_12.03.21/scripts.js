@@ -1,9 +1,11 @@
-var head, body, apple;
+var head, body, apple, score;
 var prevDir = "u", nextDir;
+var applesCnt = 0;
 
 function start() {
   head = new component(30, 30, "green", 235, 235);
   body = new component(30, 30, "lime", head.x, head.y+30); 
+  score = new component("30px", "consolas", "black", 5, 30, "text")
   // head.speedY = -1;
   generateApple();
   gameArea.start();
@@ -16,7 +18,7 @@ var gameArea = {
     this.canvas.height = 512;
     this.context = this.canvas.getContext("2d");
     document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-    this.interval = setInterval(updateGameArea, 100);
+    this.interval = setInterval(updateGameArea, 10);
     window.addEventListener('keydown', function(e) {
       gameArea.key = e.keyCode;
     })
@@ -60,14 +62,25 @@ function appleFun(x, y, r, startangle, endangle) {
     var appleBottom = this.y + this.r;
     var appleTop = this.y - this.r;
     var collision = true;
-    if (myBottom < appleTop || myTop > appleBottom || myRight < appleLeft || myLeft > appleRight) {
-      collision = false;
+    if (!(myBottom < appleTop || myTop > appleBottom || myRight < appleLeft || myLeft > appleRight)) {
+      applesCnt++;
+      // apple.clearRect(this.x, this.y, 30, 30);
+      delete apple;
+      generateApple();
     }
-    return collision;
   }
 }
 
-function component(width, height, color, x, y) {
+function outOfBounds(hx, hy) {
+  if (hx < 0 || hx > gameArea.canvas.width - 30 || hy < 0 || hy > gameArea.canvas.height - 30) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function component(width, height, color, x, y, type) {
+  this.type = type;
   this.width = width;
   this.height = height;
   this.speedX = 0;
@@ -76,8 +89,14 @@ function component(width, height, color, x, y) {
   this.y = y;
   this.update = function() {
     ctx = gameArea.context;
-    ctx.fillStyle = color;
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+    if (this.type == "text") {
+      ctx.font = this.width + " " + this.height;
+      ctx.fillStyle = color;
+      ctx.fillText(this.text, this.x, this.y);
+    } else {
+      ctx.fillStyle = color;
+      ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
   }
   this.newPos = function() {
     this.x += this.speedX;
@@ -116,14 +135,14 @@ function moveBody(body, hx, hy, prevDir, nextDir) {
   }
   // 
   else if (prevDir == "r" && nextDir == "d") {
-    body.y = hy + 30;
+    body.y = hy - 30;
     while (body.x != hx) {
       body.x += 1;
       body.update();
     }
   }
   else if (prevDir == "r" && nextDir == "u") {
-    body.y = hy - 30;
+    body.y = hy + 30;
     while (body.x != hx) {
       body.x += 1;
       body.update();
@@ -143,23 +162,49 @@ function moveBody(body, hx, hy, prevDir, nextDir) {
       body.update();
     }
   }
-
-  // prevDir = nextDir;
+  /*
+    8th grade called...
+    Asked to give its code back.  
+    ¯\_(ツ)_/¯
+  */
   body.update();
 }
 
-function updateGameArea() {  // TODO fix slowing down of the head.
-  if(apple.collide(head)) {
+function updateGameArea() { 
+  if(outOfBounds(head.x, head.y)) {
     gameArea.stop();
   } else {
     gameArea.clear();
-    if (gameArea.key == 72 && gameArea.key && head.speedX != 1) {head.speedX = -1; head.speedY = 0; prevDir = nextDir; nextDir = "l";}
-    else if (gameArea.key == 76 && gameArea.key && head.speedX != -1) {head.speedX = 1; head.speedY = 0; prevDir = nextDir; nextDir = "r";}  // elses are to fix rapid key presses
-    else if (gameArea.key == 75 && gameArea.key && head.speedY != 1) {head.speedY = -1; head.speedX = 0; prevDir = nextDir; nextDir = "u";}
-    else if (gameArea.key == 74 && gameArea.key && head.speedY != -1) {head.speedY = 1; head.speedX = 0; prevDir = nextDir; nextDir = "d";}
+    if (gameArea.key == 37 && gameArea.key && head.speedX != 1) {
+      head.speedX = -1; 
+      head.speedY = 0; 
+      prevDir = nextDir; 
+      nextDir = "l";
+    }
+    else if (gameArea.key == 39 && gameArea.key && head.speedX != -1) {
+      head.speedX = 1; 
+      head.speedY = 0; 
+      prevDir = nextDir; 
+      nextDir = "r";
+    }
+    else if (gameArea.key == 38 && gameArea.key && head.speedY != 1) {
+      head.speedY = -1; 
+      head.speedX = 0; 
+      prevDir = nextDir; 
+      nextDir = "u";
+    }
+    else if (gameArea.key == 40 && gameArea.key && head.speedY != -1) {
+      head.speedY = 1; 
+      head.speedX = 0; 
+      prevDir = nextDir; 
+      nextDir = "d";
+    }
+    apple.collide(head);
     body.speedX = head.speedX;
     body.speedY = head.speedY;
     moveBody(body, head.x, head.y, prevDir, nextDir);
+    score.text = "Score: " + applesCnt;
+    score.update();
     head.newPos();
     head.update();
     body.newPos();
