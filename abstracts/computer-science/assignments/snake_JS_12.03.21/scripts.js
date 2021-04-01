@@ -1,215 +1,182 @@
-var head, body, apple, score;
-var prevDir = "u", nextDir;
-var applesCnt = 0;
-
-function start() {
-  head = new component(30, 30, "green", 235, 235);
-  body = new component(30, 30, "lime", head.x, head.y+30); 
-  score = new component("30px", "consolas", "black", 5, 30, "text")
-  // head.speedY = -1;
-  generateApple();
-  gameArea.start();
+const canvas = document.getElementById("snake");
+const ctx = canvas.getContext("2d");
+var snakeBody = [];
+var speed = 7;
+var boost = 7;
+var tileCnt = 20;
+var tileSize = canvas.width / tileCnt - 2;
+var headX = 10;
+var headY = 10;
+var tailLength = 2; 
+var appleX = 5;
+var appleY = 5;
+var speedX = 0;
+var speedY = 0;
+var score = 0;
+class snakeCtor {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
 }
-
-var gameArea = {
-  canvas : document.createElement("canvas"),
-  start : function () {
-    this.canvas.width = 512;
-    this.canvas.height = 512;
-    this.context = this.canvas.getContext("2d");
-    document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-    this.interval = setInterval(updateGameArea, 10);
-    window.addEventListener('keydown', function(e) {
-      gameArea.key = e.keyCode;
-    })
-    window.addEventListener('keyup', function(e) {
-      gameArea.key = false;
-    })
-  },
-  clear : function() {
-    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-  },
-  stop : function() {
-    clearInterval(this.interval);
+ 
+document.body.addEventListener("keydown", keyDown);
+function keyDown(event){
+  // Boost on spacebar
+  if (event.keyCode == 32) {
+    boost++;
+  }
+  // Up
+  if(event.keyCode == 38) {
+    if(speedY == 1)
+      return;
+    speedY = -1;
+    speedX = 0;
+  }
+  // Down
+  if(event.keyCode == 40) {
+    if(speedY == -1)
+      return;
+    speedY = 1;
+    speedX = 0;
+  }
+  // Left
+  if(event.keyCode == 37) {
+    if(speedX == 1)
+      return;
+    speedY = 0;
+    speedX = -1;
+  }
+  // Right
+  if(event.keyCode == 39) {
+    if(speedX == -1)
+      return;
+    speedY = 0;
+    speedX = 1;
   }
 }
 
-function generateApple() {
-  randX = Math.floor(Math.random()*500);
-  randY = Math.floor(Math.random()*500);
-  return apple = new appleFun(randX, randY, 15, 0, 2*Math.PI);
-}
-
-function appleFun(x, y, r, startangle, endangle) {
-  this.x = x;
-  this.y = y;
-  this.r = r;
-  this.startangle = startangle;
-  this.endangle = endangle;
-  this.update = function() {
-    ctx = gameArea.context;
-    ctx.fillStyle = "red";
-    ctx.arc(this.x, this.y, this.r, this.startangle, this.endangle);
-    ctx.fill();
+drawGame();
+function drawGame() {
+  changeSnakePosition();
+  if(gameOver()) {
+    return;
   }
-  this.collide = function(head) {
-    var myLeft = head.x;
-    var myRight = head.x + head.width;
-    var myTop = head.y;
-    var myBottom = head.y + head.height;
-    var appleLeft = this.x - this.r;
-    var appleRight = this.x + this.r;
-    var appleBottom = this.y + this.r;
-    var appleTop = this.y - this.r;
-    var collision = true;
-    if (!(myBottom < appleTop || myTop > appleBottom || myRight < appleLeft || myLeft > appleRight)) {
-      applesCnt++;
-      // apple.clearRect(this.x, this.y, 30, 30);
-      delete apple;
-      generateApple();
+  clearScreen();
+  checkAppleCollision();
+  drawApple();
+  drawSnake();
+  drawSpeed();
+  drawScore();
+  if (boost == 7) {
+    if(score >= 3) {
+      speed = 9;
     }
-  }
-}
-
-function outOfBounds(hx, hy) {
-  if (hx < 0 || hx > gameArea.canvas.width - 30 || hy < 0 || hy > gameArea.canvas.height - 30) {
-    return true;
+    if (score >= 5) {
+      speed = 11;
+    }
+    if(score >= 7) {
+      speed = 13;
+    }
+    if(score >= 10) {
+      speed = 15;
+    }
+    if(score >= 15) {
+      speed = 20;
+    }
+    if(score >= 20) {
+      speed = 25;
+    }
+    if(score >= 25) {
+      speed = 30;
+    }
   } else {
+    speed = boost;
+  }
+  setTimeout(drawGame, 1000 / speed);  // 1000 == 1sec
+} 
+ 
+function gameOver() {
+  var gameOver = false;
+  if (speedY == 0 && speedX == 0){
     return false;
   }
+  if (headX < 0) {
+    gameOver = true;
+  }
+  else if (headX == tileCnt) {
+    gameOver = true
+  }
+  else if (headY < 0) {
+    gameOver = true;
+  }
+  else if (headY == tileCnt) {
+    gameOver = true
+  }
+  for (var i = 0; i < snakeBody.length; i++) {
+    var body = snakeBody[i];
+    if (body.x == headX && body.y == headY) {
+      gameOver = true;
+      break;
+    }
+  }
+
+  if (gameOver) {
+    ctx.fillStyle = "white";
+    ctx.font = "50px Verdana";
+    ctx.fillText("Game Over!", canvas.width / 6.5, canvas.height / 2);
+  }
+  return gameOver;
+}
+ 
+function drawSpeed() {
+  ctx.fillStyle = "white";
+  ctx.font = "16px Verdana";
+  var drawnSpeed = speed - 6;
+  ctx.fillText("Speed: " + drawnSpeed, 3, 33);
+}
+ 
+function drawScore() {
+  ctx.fillStyle = "white";
+  ctx.font = "16px Verdana";
+  ctx.fillText("Score: " + score, 3, 15);
+}
+ 
+function clearScreen() {
+  ctx.fillStyle = "black";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+function drawSnake() {
+  ctx.fillStyle = "green";
+  for (var i = 0; i < snakeBody.length; i++) {
+    var body = snakeBody[i];
+    ctx.fillRect(body.x * tileCnt, body.y * tileCnt, tileSize, tileSize);
+  }
+  snakeBody.push(new snakeCtor(headX, headY));
+  while (snakeBody.length > tailLength) { 
+    snakeBody.shift();
+  }
+  ctx.fillStyle = "lime";
+  ctx.fillRect(headX * tileCnt, headY * tileCnt, tileSize, tileSize);
 }
 
-function component(width, height, color, x, y, type) {
-  this.type = type;
-  this.width = width;
-  this.height = height;
-  this.speedX = 0;
-  this.speedY = 0;
-  this.x = x;
-  this.y = y;
-  this.update = function() {
-    ctx = gameArea.context;
-    if (this.type == "text") {
-      ctx.font = this.width + " " + this.height;
-      ctx.fillStyle = color;
-      ctx.fillText(this.text, this.x, this.y);
-    } else {
-      ctx.fillStyle = color;
-      ctx.fillRect(this.x, this.y, this.width, this.height);
-    }
-  }
-  this.newPos = function() {
-    this.x += this.speedX;
-    this.y += this.speedY;
-  }
+function changeSnakePosition() {
+  headX = headX + speedX;
+  headY = headY + speedY;
 }
 
-function moveBody(body, hx, hy, prevDir, nextDir) {
-  if (prevDir == "u" && nextDir == "l") {
-    body.x = hx + 30;
-    while (body.y != hy) {
-      body.y -= 1;
-      body.update();
-    }
-  }
-  else if (prevDir == "u" && nextDir == "r") {
-    body.x = hx - 30;
-    while (body.y != hy) {
-      body.y -= 1;
-      body.update();
-    }
-  }
-  else if (prevDir == "d" && nextDir == "l") {
-    body.x = hx + 30;
-    while (body.y != hy) {
-      body.y += 1;
-      body.update();
-    }
-  }
-  else if (prevDir == "d" && nextDir == "r") {
-    body.x = hx - 30;
-    while (body.y != hy) {
-      body.y += 1;
-      body.update();
-    }
-  }
-  // 
-  else if (prevDir == "r" && nextDir == "d") {
-    body.y = hy - 30;
-    while (body.x != hx) {
-      body.x += 1;
-      body.update();
-    }
-  }
-  else if (prevDir == "r" && nextDir == "u") {
-    body.y = hy + 30;
-    while (body.x != hx) {
-      body.x += 1;
-      body.update();
-    }
-  }
-  else if (prevDir == "l" && nextDir == "d") {
-    body.y = hy - 30;
-    while (body.x != hx) {
-      body.x -= 1;
-      body.update();
-    }
-  }
-  else if (prevDir == "l" && nextDir == "u") {
-    body.y = hy + 30;
-    while (body.x != hx) {
-      body.x -= 1;
-      body.update();
-    }
-  }
-  /*
-    8th grade called...
-    Asked to give its code back.  
-    ¯\_(ツ)_/¯
-  */
-  body.update();
+function drawApple() {
+  ctx.fillStyle = "red";
+  ctx.fillRect(appleX * tileCnt, appleY * tileCnt, tileSize, tileSize);
 }
 
-function updateGameArea() { 
-  if(outOfBounds(head.x, head.y)) {
-    gameArea.stop();
-  } else {
-    gameArea.clear();
-    if (gameArea.key == 37 && gameArea.key && head.speedX != 1) {
-      head.speedX = -1; 
-      head.speedY = 0; 
-      prevDir = nextDir; 
-      nextDir = "l";
-    }
-    else if (gameArea.key == 39 && gameArea.key && head.speedX != -1) {
-      head.speedX = 1; 
-      head.speedY = 0; 
-      prevDir = nextDir; 
-      nextDir = "r";
-    }
-    else if (gameArea.key == 38 && gameArea.key && head.speedY != 1) {
-      head.speedY = -1; 
-      head.speedX = 0; 
-      prevDir = nextDir; 
-      nextDir = "u";
-    }
-    else if (gameArea.key == 40 && gameArea.key && head.speedY != -1) {
-      head.speedY = 1; 
-      head.speedX = 0; 
-      prevDir = nextDir; 
-      nextDir = "d";
-    }
-    apple.collide(head);
-    body.speedX = head.speedX;
-    body.speedY = head.speedY;
-    moveBody(body, head.x, head.y, prevDir, nextDir);
-    score.text = "Score: " + applesCnt;
-    score.update();
-    head.newPos();
-    head.update();
-    body.newPos();
-    body.update();
-    apple.update();
+function checkAppleCollision() {
+  if (appleX == headX && appleY == headY) {
+    appleX = Math.floor(Math.random() * tileCnt);
+    appleY = Math.floor(Math.random() * tileCnt);
+    tailLength++;
+    score++;
   }
 }
+ 
 
